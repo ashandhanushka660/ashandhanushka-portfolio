@@ -28,8 +28,27 @@ import {
   LucideCopy,
   LucideCheck,
   LucideInstagram,
-  LucideLinkedin
+  LucideLinkedin,
+  LucideSmartphone
 } from 'lucide-react';
+
+const FloatingCrystal = ({ className = '', size = 200 }: { className?: string; size?: number }) => (
+  <svg
+    viewBox="0 0 200 200"
+    className={`absolute transition-all duration-1000 ease-in-out ${className}`}
+    style={{ width: size, height: size, filter: 'blur(2px)' }}
+  >
+    <defs>
+      <linearGradient id="crystalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#e0c3fc" stopOpacity="0.8" />
+        <stop offset="50%" stopColor="#8ec5fc" stopOpacity="0.6" />
+        <stop offset="100%" stopColor="#d1a3ff" stopOpacity="0.4" />
+      </linearGradient>
+    </defs>
+    <path d="M100 20 L160 80 L100 180 L40 80 Z" fill="url(#crystalGrad)" className="animate-pulse" />
+    <path d="M100 20 L130 80 L100 110 L70 80 Z" fill="rgba(255,255,255,0.3)" />
+  </svg>
+);
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('HOME');
@@ -40,7 +59,7 @@ const App = () => {
   const heroSlides = [
     { type: 'image', src: '/hero-1.jpg', alt: 'Ashan Working 1' },
     { type: 'image', src: '/hero-2.jpg', alt: 'Ashan Working 2' },
-    { type: 'crystal', alt: 'Abstract Crystal' }
+    { type: 'crystal' }
   ];
 
   const nextHeroSlide = () => setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
@@ -120,112 +139,117 @@ const App = () => {
         'Real-time state tracking with Supabase',
         'Cross-platform digital asset management'
       ],
-      githubUrl: 'https://github.com/ashandhanushka'
+      repositories: ['Digital-Wallet-Ecosystem'],
+      githubUrl: 'https://github.com/ashandhanushka660'
     },
     {
-      id: 'camera-sim',
-      category: 'Simulations & Multimedia',
-      title: 'Camera Anatomy & Simulation',
-      subtitle: 'Hardware Simulation & Logic',
-      description: 'Specialized projects designed to simulate the internal workings and visual outputs of complex camera systems.',
-      tags: ['C#', 'WPF', 'JavaScript', 'Game Logic'],
-      icon: <LucideCamera className="w-5 h-5" />,
-      color: 'border-blue-500/30 shadow-blue-500/10 text-blue-400',
-      learningPoints: [
-        'Hardware Mapping: Anatomy to Software Logic',
-        'Graphic rendering for simulation controls',
-        'Logic-based modeling of physical devices',
-        'High-fidelity UI interaction systems'
-      ],
-      githubUrl: 'https://github.com/ashandhanushka'
-    },
-    {
-      id: 'soap-practicals',
-      category: 'Service Architecture',
-      title: 'SOAP-Web-Services-Practicals',
-      subtitle: 'Distributed Systems & Integration',
-      description: 'A comprehensive series of practicals covering service creation, WSDL definitions, and complex WS-BPEL service composition.',
-      tags: ['PHP', 'XML', 'WSDL', 'WS-BPEL', 'SOAP'],
-      icon: <LucideDatabase className="w-5 h-5" />,
-      color: 'border-cyan-500/30 shadow-cyan-500/10 text-cyan-400',
-      learningPoints: [
-        'SOAP Implementation via PHP & XAMPP',
-        'XML-based messaging and WSDL interfaces',
-        'Service Composition (WS-BPEL Orchestration)',
-        'SOAP Envelopes, Headers, and Bodies'
-      ],
-      githubUrl: 'https://github.com/ashandhanushka'
-    },
-    {
-      id: 'modern-web',
-      category: 'Modern Web Development',
-      title: 'Full-Stack & Automation Tools',
-      subtitle: 'Commerce & Data Engineering',
-      description: 'A mix of modern React-based commerce platforms, web scraping engines, and AI-driven automation tools.',
-      tags: ['Next.js', 'React', 'Python', 'Web Scraping', 'AI/ML'],
-      icon: <LucideGlobe className="w-5 h-5" />,
-      color: 'border-purple-500/30 shadow-purple-500/10 text-purple-400',
-      learningPoints: [
-        'SSR & Static Site Generation with Next.js',
-        'Web Scraping engines for data mining',
-        'AI-driven Text-to-Speech (EN/SN) systems',
-        'High-performance commerce architecture'
-      ],
-      githubUrl: 'https://github.com/ashandhanushka'
-    },
-    {
-      id: 'js-logic',
-      category: 'Logic & Algorithms',
-      title: 'JS Practicals Repository',
-      subtitle: 'Foundational Coding Challenges',
-      description: 'Focusing on DOM manipulation and functional programming patterns to build efficient, scalable scripts.',
-      tags: ['JavaScript (ES6+)', 'HTML5', 'CSS3'],
-      icon: <LucideBinary className="w-5 h-5" />,
-      color: 'border-yellow-500/30 shadow-yellow-500/10 text-yellow-400',
-      learningPoints: [
-        'Functional Programming: forEach, filter, immutability',
-        'DOM Manipulation: Event listeners & dynamic styling',
-        'Selector optimization and object creation',
-        'ES6+ best practices and modularity'
-      ],
-      githubUrl: 'https://github.com/ashandhanushka'
-    },
-    {
-      id: 'specialized-apps',
+      id: 'domain-specific-suite',
       category: 'Specialized Applications',
       title: 'Domain-Specific Software Suite',
-      subtitle: 'Event & Organization Management',
+      subtitle: 'Management & Logic Systems',
       description: 'Targeted software for library management, real-time sports scoreboards, and secure voting systems.',
-      tags: ['WPF', 'C#', 'SQL', 'UI/UX Design'],
-      icon: <LucideTrophy className="w-5 h-5" />,
-      color: 'border-rose-500/30 shadow-rose-500/10 text-rose-400',
+      tags: ['Java Swing', 'C#', '.NET', 'SQL', 'UI/UX Design'],
+      icon: <LucideDatabase className="w-5 h-5" />,
+      color: 'border-blue-500/30 shadow-blue-500/10 text-blue-400',
       learningPoints: [
-        'Library Management: Desktop UI/UX & CRUD',
-        'Sports Scoreboards: Real-time data tracking',
-        'Secure Voting: Logic for tallying & reporting',
-        'Organizational workflow automation'
+        'Library Management: Desktop UI/UX & CRUD implementation using Java Swing and MySQL.',
+        'Sports Scoreboards: Real-time data tracking and event-driven logic.',
+        'Secure Voting: Backend logic for data integrity, tallying, and reporting.',
+        'Organizational workflow automation: Streamlining administrative tasks through automated scripts.'
       ],
-      githubUrl: 'https://github.com/ashandhanushka'
+      repositories: ['Library-Management-System-Java', 'ScoreBoard-Project', 'Voting-System-Logic'],
+      githubUrl: 'https://github.com/ashandhanushka660'
+    },
+    {
+      id: 'fullstack-ecosystems',
+      category: 'Full-Stack Development',
+      title: 'Full-Stack Development Ecosystems',
+      subtitle: 'Scalable Health-Tech & CMS',
+      description: 'Scalable web architectures focusing on health-tech and content management using the MERN stack.',
+      tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
+      icon: <LucideGlobe className="w-5 h-5" />,
+      color: 'border-cyan-500/30 shadow-cyan-500/10 text-cyan-400',
+      learningPoints: [
+        'MERN Architecture: Building end-to-end JavaScript environments.',
+        'State Management: Handling complex user data across React components.',
+        'RESTful API Design: Creating seamless communication between Node.js backends and NoSQL databases.'
+      ],
+      repositories: ['MERN-Workout-Tracker', 'React-Blog-App'],
+      githubUrl: 'https://github.com/ashandhanushka660'
+    },
+    {
+      id: 'mobile-system-utilities',
+      category: 'System & Mobile',
+      title: 'Mobile & System Utility Tools',
+      subtitle: 'Native Apps & Performance Logic',
+      description: 'Native Android development and performance-oriented system programming using C++ and Java.',
+      tags: ['Android SDK', 'Java', 'C++', 'Firebase', 'OOP'],
+      icon: <LucideSmartphone className="w-5 h-5" />,
+      color: 'border-purple-500/30 shadow-purple-500/10 text-purple-400',
+      learningPoints: [
+        'Mobile Lifecycle: Managing Activity states and mobile-specific resource constraints.',
+        'OOP Optimization: Utilizing C++ and Java for memory-efficient utility tools.',
+        'Open Source Standards: Maintaining code quality for global collaboration.'
+      ],
+      repositories: ['Android-App-Collection', 'Hacktoberfest-Contributions', 'CPP-Utility-Library'],
+      githubUrl: 'https://github.com/ashandhanushka660'
+    },
+    {
+      id: 'domain-specific-suite',
+      category: 'Specialized Applications',
+      title: 'Domain-Specific Software Suite',
+      subtitle: 'Management & Logic Systems',
+      description: 'Targeted software for library management, real-time sports scoreboards, and secure voting systems.',
+      tags: ['Java Swing', 'C#', '.NET', 'SQL', 'UI/UX Design'],
+      icon: <LucideDatabase className="w-5 h-5" />, // Ensure LucideDatabase is imported
+      color: 'border-blue-500/30 shadow-blue-500/10 text-blue-400',
+      learningPoints: [
+        'Library Management: Desktop UI/UX & CRUD implementation',
+        'Sports Scoreboards: Real-time data tracking and event logic',
+        'Secure Voting: Logic for data integrity and reporting',
+        'Automation: Streamlining tasks through automated scripts'
+      ],
+      repositories: ['Library-Management-System-Java', 'ScoreBoard-Project', 'Voting-System-Logic'],
+      githubUrl: 'https://github.com/ashandhanushka660'
+    },
+    {
+      id: 'fullstack-ecosystems',
+      category: 'Full-Stack Development',
+      title: 'Full-Stack Development Ecosystems',
+      subtitle: 'Scalable Health-Tech & CMS',
+      description: 'Scalable web architectures focusing on health-tech and content management using the MERN stack.',
+      tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
+      icon: <LucideGlobe className="w-5 h-5" />,
+      color: 'border-cyan-500/30 shadow-cyan-500/10 text-cyan-400',
+      learningPoints: [
+        'MERN Architecture: Building end-to-end JS environments',
+        'State Management: Handling complex user data in React',
+        'RESTful API Design: Seamless Node.js & NoSQL communication',
+        'Auth & Security: Implementing JWT for secure access'
+      ],
+      repositories: ['MERN-Workout-Tracker', 'React-Blog-App'],
+      githubUrl: 'https://github.com/ashandhanushka660'
+    },
+    {
+      id: 'mobile-system-utilities',
+      category: 'System & Mobile',
+      title: 'Mobile & System Utility Tools',
+      subtitle: 'Native Apps & Performance Logic',
+      description: 'Native Android development and performance-oriented system programming using C++ and Java.',
+      tags: ['Android SDK', 'Java', 'C++', 'Firebase', 'OOP'],
+      icon: <LucideSmartphone className="w-5 h-5" />, // Ensure LucideSmartphone is imported
+      color: 'border-purple-500/30 shadow-purple-500/10 text-purple-400',
+      learningPoints: [
+        'Mobile Lifecycle: Managing states and resource constraints',
+        'OOP Optimization: Memory-efficient utility tool design',
+        'Open Source Standards: Maintaining high code quality',
+        'Firebase Integration: Real-time database & Auth'
+      ],
+      repositories: ['Android-App-Collection', 'Hacktoberfest-Contributions', 'CPP-Utility-Library'],
+      githubUrl: 'https://github.com/ashandhanushka660'
     }
   ];
 
-  const FloatingCrystal = ({ className = '', size = 200 }: { className?: string; size?: number }) => (
-    <svg
-      viewBox="0 0 200 200"
-      className={`absolute transition-all duration-1000 ease-in-out ${className}`}
-      style={{ width: size, height: size, filter: 'blur(2px)' }}
-    >
-      <defs>
-        <linearGradient id="crystalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#e0c3fc" stopOpacity="0.8" />
-          <stop offset="50%" stopColor="#8ec5fc" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#d1a3ff" stopOpacity="0.4" />
-        </linearGradient>
-      </defs>
-      <path d="M100 20 L160 80 L100 180 L40 80 Z" fill="url(#crystalGrad)" className="animate-pulse" />
-      <path d="M100 20 L130 80 L100 110 L70 80 Z" fill="rgba(255,255,255,0.3)" />
-    </svg>
-  );
 
   return (
     <div className="min-h-screen bg-[#0a0a0c] text-white font-sans overflow-hidden flex flex-col items-center justify-center p-4 md:p-10 selection:bg-purple-500/30">
@@ -416,7 +440,6 @@ const App = () => {
                         ))}
                       </div>
                     </div>
-
                     <div className="flex flex-wrap gap-2 pt-2">
                       {project.tags.map(tag => (
                         <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-400 font-medium">
@@ -424,6 +447,21 @@ const App = () => {
                         </span>
                       ))}
                     </div>
+
+                    {project.repositories && (
+                      <div className="space-y-3">
+                        <div className="text-[10px] font-bold text-gray-500 tracking-widest uppercase flex items-center gap-2">
+                          <LucideBookOpen className="w-3 h-3" /> Respective Repositories:
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {project.repositories.map(repo => (
+                            <span key={repo} className="flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-[9px] text-gray-400 font-mono italic">
+                              {repo}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
@@ -545,6 +583,13 @@ const App = () => {
                       { name: "PHP", color: "777BB4", logo: "php" },
                       { name: "Laravel", color: "FF2D20", logo: "laravel" },
                       { name: "React", color: "61DAFB", logo: "react" },
+                      { name: "Next.js", color: "000000", logo: "next.js" },
+                      { name: "MongoDB", color: "47A248", logo: "mongodb" },
+                      { name: "MySQL", color: "4479A1", logo: "mysql" },
+                      { name: "AWS", color: "232F3E", logo: "amazon-aws" },
+                      { name: "Expo", color: "000020", logo: "expo" },
+                      { name: "Quasar", color: "1976D2", logo: "quasar" },
+                      { name: "Vue.js", color: "4FC08D", logo: "vue.js" },
                       { name: "Git", color: "F05032", logo: "git" }
                     ].map((tech) => (
                       <Image
@@ -667,7 +712,7 @@ const App = () => {
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 10px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.1); }
       `}} />
-    </div>
+    </div >
   );
 };
 
