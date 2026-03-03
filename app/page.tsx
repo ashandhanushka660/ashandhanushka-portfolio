@@ -26,7 +26,8 @@ import {
   LucideCheck,
   LucideInstagram,
   LucideLinkedin,
-  LucideSmartphone
+  LucideSmartphone,
+  LucideCamera
 } from 'lucide-react';
 
 const FloatingCrystal = ({ className = '', size = 200 }: { className?: string; size?: number }) => (
@@ -189,6 +190,41 @@ const App = () => {
         'Open Source Standards: Maintaining code quality for global collaboration.'
       ],
       repositories: ['Android-App-Collection', 'Hacktoberfest-Contributions', 'CPP-Utility-Library'],
+      githubUrl: 'https://github.com/ashandhanushka660'
+    },
+
+    {
+      id: 'camera-simulation',
+      category: 'Simulations & Advanced Web Development',
+      title: 'Camera Simulation Education Tools',
+      subtitle: 'React & Three.js Architecture',
+      description: 'Educational simulation to study camera anatomy and real-time rendering logic.',
+      tags: ['React', 'Three.js', 'Simulation', 'JavaScript', 'OOP'],
+      icon: <LucideCamera className="w-5 h-5" />,
+      color: 'border-rose-500/30 shadow-rose-500/10 text-rose-400',
+      learningPoints: [
+        'Advanced Web Apps: Implementing Three.js for 3D educational tools.',
+        'Dynamic Building: Learning dynamic website architecture and browser-based simulations.',
+        'Browser-based Game Logic: Applying game development concepts to educational software.'
+      ],
+      repositories: ['camera-simulation-for-education-Tools'],
+      githubUrl: 'https://github.com/ashandhanushka660'
+    },
+    {
+      id: 'SOAP-webservices',
+      category: 'Webservice Development',
+      title: 'SOAP Protocol Architecture',
+      subtitle: 'XML-based Webservice Systems',
+      description: 'Implementation of enterprise webservices using SOAP protocol, XML processing, and PHP.',
+      tags: ['PHP', 'SOAP', 'XML', 'API Design'],
+      icon: <LucideLayers className="w-5 h-5" />,
+      color: 'border-amber-500/30 shadow-amber-500/10 text-amber-400',
+      learningPoints: [
+        'Webservice Protocols: Understanding the architecture of SOAP-based communication.',
+        'Architecture: Building inter-operable systems using PHP and XML processing.',
+        'Platform-Independence: Ensuring seamless data exchange across diverse environments.'
+      ],
+      repositories: ['SOAP-webservices-development-for-beginners'],
       githubUrl: 'https://github.com/ashandhanushka660'
     }
   ];
@@ -637,12 +673,12 @@ const App = () => {
 
         </main>
 
-        <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
+        <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay" style={{ backgroundImage: "url(https://grainy-gradients.vercel.app/noise.svg)" }} />
       </div>
 
       <footer className="mt-8 text-[10px] text-gray-600 tracking-[0.3em] uppercase flex flex-col items-center gap-2">
         <div className="flex items-center gap-2">
-          <span>&copy; 2024 ASHAN DHANUSHKA</span>
+          <span>&copy; 2025 ASHAN DHANUSHKA</span>
           <span className="w-1 h-1 rounded-full bg-gray-700" />
           <span>SRI LANKA</span>
         </div>
