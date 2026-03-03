@@ -14,9 +14,6 @@ import {
   LucideGlobe,
   LucideTerminal,
   LucideWallet,
-  LucideCamera,
-  LucideTrophy,
-  LucideBinary,
   LucideGithub,
   LucideBookOpen,
   LucideTarget,
@@ -193,60 +190,6 @@ const App = () => {
       ],
       repositories: ['Android-App-Collection', 'Hacktoberfest-Contributions', 'CPP-Utility-Library'],
       githubUrl: 'https://github.com/ashandhanushka660'
-    },
-    {
-      id: 'domain-specific-suite',
-      category: 'Specialized Applications',
-      title: 'Domain-Specific Software Suite',
-      subtitle: 'Management & Logic Systems',
-      description: 'Targeted software for library management, real-time sports scoreboards, and secure voting systems.',
-      tags: ['Java Swing', 'C#', '.NET', 'SQL', 'UI/UX Design'],
-      icon: <LucideDatabase className="w-5 h-5" />, // Ensure LucideDatabase is imported
-      color: 'border-blue-500/30 shadow-blue-500/10 text-blue-400',
-      learningPoints: [
-        'Library Management: Desktop UI/UX & CRUD implementation',
-        'Sports Scoreboards: Real-time data tracking and event logic',
-        'Secure Voting: Logic for data integrity and reporting',
-        'Automation: Streamlining tasks through automated scripts'
-      ],
-      repositories: ['Library-Management-System-Java', 'ScoreBoard-Project', 'Voting-System-Logic'],
-      githubUrl: 'https://github.com/ashandhanushka660'
-    },
-    {
-      id: 'fullstack-ecosystems',
-      category: 'Full-Stack Development',
-      title: 'Full-Stack Development Ecosystems',
-      subtitle: 'Scalable Health-Tech & CMS',
-      description: 'Scalable web architectures focusing on health-tech and content management using the MERN stack.',
-      tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
-      icon: <LucideGlobe className="w-5 h-5" />,
-      color: 'border-cyan-500/30 shadow-cyan-500/10 text-cyan-400',
-      learningPoints: [
-        'MERN Architecture: Building end-to-end JS environments',
-        'State Management: Handling complex user data in React',
-        'RESTful API Design: Seamless Node.js & NoSQL communication',
-        'Auth & Security: Implementing JWT for secure access'
-      ],
-      repositories: ['MERN-Workout-Tracker', 'React-Blog-App'],
-      githubUrl: 'https://github.com/ashandhanushka660'
-    },
-    {
-      id: 'mobile-system-utilities',
-      category: 'System & Mobile',
-      title: 'Mobile & System Utility Tools',
-      subtitle: 'Native Apps & Performance Logic',
-      description: 'Native Android development and performance-oriented system programming using C++ and Java.',
-      tags: ['Android SDK', 'Java', 'C++', 'Firebase', 'OOP'],
-      icon: <LucideSmartphone className="w-5 h-5" />, // Ensure LucideSmartphone is imported
-      color: 'border-purple-500/30 shadow-purple-500/10 text-purple-400',
-      learningPoints: [
-        'Mobile Lifecycle: Managing states and resource constraints',
-        'OOP Optimization: Memory-efficient utility tool design',
-        'Open Source Standards: Maintaining high code quality',
-        'Firebase Integration: Real-time database & Auth'
-      ],
-      repositories: ['Android-App-Collection', 'Hacktoberfest-Contributions', 'CPP-Utility-Library'],
-      githubUrl: 'https://github.com/ashandhanushka660'
     }
   ];
 
@@ -321,7 +264,7 @@ const App = () => {
                     >
                       <Image
                         src={heroSlides[currentHeroSlide].src!}
-                        alt={heroSlides[currentHeroSlide].alt}
+                        alt={heroSlides[currentHeroSlide].alt || 'Hero Image'}
                         fill
                         className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                       />
@@ -673,7 +616,7 @@ const App = () => {
             <div className="bg-[#1a1a20]/20 border border-white/5 rounded-[40px] p-12 text-center space-y-10 mb-20 relative overflow-hidden group/cta">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-1000" />
               <div className="space-y-2 relative z-10">
-                <h3 className="text-2xl font-bold tracking-tight uppercase">Let's build something extraordinary.</h3>
+                <h3 className="text-2xl font-bold tracking-tight uppercase">Let&apos;s build something extraordinary.</h3>
                 <p className="text-gray-500 text-sm tracking-widest">OPEN FOR NEW OPPORTUNITIES AND OPEN SOURCE CONTRIBUTIONS.</p>
               </div>
               <div className="flex flex-wrap justify-center items-center gap-8 relative z-10">
