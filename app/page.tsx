@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   LucideLayers,
   LucideExternalLink,
@@ -34,6 +35,16 @@ const App = () => {
   const [activeTab, setActiveTab] = useState('HOME');
   const [isHovered, setIsHovered] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+  const heroSlides = [
+    { type: 'image', src: '/hero-1.jpg', alt: 'Ashan Working 1' },
+    { type: 'image', src: '/hero-2.jpg', alt: 'Ashan Working 2' },
+    { type: 'crystal', alt: 'Abstract Crystal' }
+  ];
+
+  const nextHeroSlide = () => setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
+  const prevHeroSlide = () => setCurrentHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
   // Profile Image Path (assuming local or provided in environment)
   const profileImg = "/ashan-profile.png";
@@ -273,19 +284,64 @@ const App = () => {
               <FloatingCrystal className="top-10 left-10 opacity-40 scale-50 rotate-12" size={150} />
               <FloatingCrystal className="bottom-10 right-10 opacity-30 scale-75 -rotate-45" size={180} />
 
-              <div className="relative z-10 transition-transform duration-500 hover:scale-105 cursor-grab active:cursor-grabbing">
-                <FloatingCrystal className="animate-[bounce_8s_infinite_ease-in-out]" size={320} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  <FloatingCrystal className="rotate-90 opacity-80" size={140} />
-                </div>
+              <div className="relative z-10 w-full h-full flex items-center justify-center p-12">
+                <AnimatePresence mode="wait">
+                  {heroSlides[currentHeroSlide].type === 'image' ? (
+                    <motion.div
+                      key={heroSlides[currentHeroSlide].src}
+                      initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+                      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                      exit={{ opacity: 0, scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+                    >
+                      <Image
+                        src={heroSlides[currentHeroSlide].src!}
+                        alt={heroSlides[currentHeroSlide].alt}
+                        fill
+                        className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="crystal-slide"
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.5 }}
+                      transition={{ duration: 0.6 }}
+                      className="relative z-10 transition-transform duration-500 hover:scale-105 cursor-grab active:cursor-grabbing"
+                    >
+                      <FloatingCrystal className="animate-[bounce_8s_infinite_ease-in-out]" size={320} />
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                        <FloatingCrystal className="rotate-90 opacity-80" size={140} />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5">
-                <LucideChevronLeft className="w-4 h-4 text-gray-400" />
-                <div className="w-12 h-[2px] bg-white/10 relative overflow-hidden">
-                  <div className="absolute left-0 top-0 h-full w-1/3 bg-white" />
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-black/40 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 z-30">
+                <button
+                  onClick={prevHeroSlide}
+                  className="p-1 hover:text-white text-gray-400 transition-colors"
+                >
+                  <LucideChevronLeft className="w-5 h-5" />
+                </button>
+                <div className="flex gap-2">
+                  {heroSlides.map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={`h-1 transition-all duration-300 rounded-full ${idx === currentHeroSlide ? 'w-8 bg-white' : 'w-2 bg-white/20'}`}
+                    />
+                  ))}
                 </div>
-                <LucideChevronRight className="w-4 h-4 text-gray-400" />
+                <button
+                  onClick={nextHeroSlide}
+                  className="p-1 hover:text-white text-gray-400 transition-colors"
+                >
+                  <LucideChevronRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
 
